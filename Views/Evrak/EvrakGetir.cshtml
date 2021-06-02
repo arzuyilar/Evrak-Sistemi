@@ -1,0 +1,54 @@
+﻿@model Documents.Models.Evrak
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>jhg</title>
+        
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                $("#datepicker").datepicker();
+            });
+        </script>
+    </head>
+    <body>
+
+        <br />
+        @using (Html.BeginForm("EvrakGuncelle", "Evrak", FormMethod.Post))
+        {
+            <b>Evrak ID</b>
+            @Html.TextBoxFor(x => x.EvrakID, new { @class = "form-control" })
+            <br />
+
+            <b>Evrak Adı</b>
+            @Html.TextBoxFor(x => x.Adi, new { @class = "form-control" })
+            <br />
+            <b>Evrak Tarihi</b>
+            <input type="date" name="Tarih" value="@Model.Tarih" class="form-control"/>
+            //@Html.TextBoxFor(x => x.Tarih, new { @class = "form-control", @id = "datepicker" })
+            <br />
+            <b>Konu</b>
+            @Html.TextBoxFor(x => x.Konu, new { @class = "form-control" })
+            <br />
+            <b>Tipi</b>
+            @Html.DropDownListFor(x => x.TipID, new SelectList((List<SelectListItem>)ViewData["EvrakTipleri"], "Value", "Text"), new { @class = "form-control" })
+
+            <br />
+            @*<input asp-for="Dosya" class="btn btn-default" />*@
+            <br />
+            <br />
+
+            <button type="submit" class="btn btn-success " style="background-color: black">Evrak Güncelle</button>
+        }
+
+        
+        <script src="~/loginTemplate/vendor/daterangepicker/daterangepicker.js"></script>
+        
+    </body>
+
+    </html>

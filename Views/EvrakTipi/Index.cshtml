@@ -1,0 +1,25 @@
+﻿@using Documents.Models
+@model List<EvrakTipi>
+
+
+<br />
+<table class="table table-bordered">
+    <tr style="background-color:black; color:white">
+        <th> ID</th>
+        <th> Evrak Tipi</th>
+        <th> Sil</th>
+        <th> Güncelle</th>
+        <th> Detaylar</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>GE2020.000.@x.TipID</td>
+            <td>@x.TipAdi</td>
+            <td><a href="/EvrakTipi/TipSil/@x.TipID" class="btn btn-link" style="color: #2c87f0" >Sil</a></td>
+            <td><a href="/EvrakTipi/TipGetir/@x.TipID" class="btn btn-link" style="color: #2c87f0">Güncelle</a></td>
+            <td><a href="/EvrakTipi/TipDetay/@x.TipID" class="btn btn-link" style="color: #2c87f0">Detaylar</a></td>
+        </tr>
+    }
+</table>
+<a href="/EvrakTipi/YeniTip/ " class="btn btn-success " style="background-color: black">Yeni Tip Ekle</a>
